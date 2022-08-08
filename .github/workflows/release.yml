@@ -3,7 +3,7 @@ name: release
 on:
   workflow_dispatch:
   push:
-    branches: [ release ]
+    branches: [ release, test ]
 
 jobs:
 # ================================
@@ -19,6 +19,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0 # Indicate full history so Nerdbank.GitVersioning works.
+        ref: test
 
     - name: Set up dotnet
       uses: actions/setup-dotnet@v2
@@ -63,6 +64,8 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
+      with:
+        ref: test
 
     - name: Download payload
       uses: actions/download-artifact@v3
@@ -126,6 +129,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0 # Indicate full history so Nerdbank.GitVersioning works.
+        ref: test
 
     - name: Set up dotnet
       uses: actions/setup-dotnet@v2
@@ -172,6 +176,8 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
+      with:
+        ref: test
 
     - name: Download unsigned package
       uses: actions/download-artifact@v3
@@ -241,6 +247,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0 # Indicate full history so Nerdbank.GitVersioning works.
+        ref: test
 
     - name: Set up dotnet
       uses: actions/setup-dotnet@v2
@@ -350,6 +357,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0 # Indicate full history so Nerdbank.GitVersioning works.
+        ref: test
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
@@ -382,6 +390,8 @@ jobs:
     needs: linux-build
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: test
 
     - name: Download artifacts
       uses: actions/download-artifact@v3
@@ -431,6 +441,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Indicate full history so Nerdbank.GitVersioning works.
+          ref: test
 
       - name: Set up dotnet
         uses: actions/setup-dotnet@v2
